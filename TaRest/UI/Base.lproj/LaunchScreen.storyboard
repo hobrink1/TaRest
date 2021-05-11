@@ -41,7 +41,7 @@
     <resources>
         <image name="Launch Screen Logo 167" width="167" height="167"/>
         <namedColor name="AccentColor">
-            <color red="0.73333333333333328" green="0.14117647058823529" blue="0.16470588235294117" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.73299998044967651" green="0.14100000262260437" blue="0.16500000655651093" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
 </document>

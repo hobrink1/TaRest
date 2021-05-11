@@ -52,7 +52,7 @@
 		F2E56E52264AAA5200BC2B8B /* TaRestUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TaRestUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F2E56E56264AAA5200BC2B8B /* TaRestUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaRestUITests.swift; sourceTree = "<group>"; };
 		F2E56E58264AAA5200BC2B8B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		F2E56E6B264AC06000BC2B8B /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		F2E56E6B264AC06000BC2B8B /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MainViewController.swift; path = ../MainViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,9 +103,9 @@
 		F2E56E33264AAA5100BC2B8B /* TaRest */ = {
 			isa = PBXGroup;
 			children = (
-				F2E56E68264AADDB00BC2B8B /* Support */,
-				F2E56E69264ABF8A00BC2B8B /* Base App */,
-				F2E56E6A264AC03300BC2B8B /* UI */,
+				F2E56E79264B283F00BC2B8B /* Support */,
+				F2E56E74264B269A00BC2B8B /* Base App */,
+				F2E56E75264B271100BC2B8B /* UI */,
 			);
 			path = TaRest;
 			sourceTree = "<group>";
@@ -128,32 +128,40 @@
 			path = TaRestUITests;
 			sourceTree = "<group>";
 		};
-		F2E56E68264AADDB00BC2B8B /* Support */ = {
-			isa = PBXGroup;
-			children = (
-				F2E56E42264AAA5200BC2B8B /* Info.plist */,
-				F2E56E3D264AAA5200BC2B8B /* Assets.xcassets */,
-			);
-			name = Support;
-			sourceTree = "<group>";
-		};
-		F2E56E69264ABF8A00BC2B8B /* Base App */ = {
+		F2E56E74264B269A00BC2B8B /* Base App */ = {
 			isa = PBXGroup;
 			children = (
 				F2E56E34264AAA5100BC2B8B /* AppDelegate.swift */,
 				F2E56E36264AAA5100BC2B8B /* SceneDelegate.swift */,
 			);
-			name = "Base App";
+			path = "Base App";
 			sourceTree = "<group>";
 		};
-		F2E56E6A264AC03300BC2B8B /* UI */ = {
+		F2E56E75264B271100BC2B8B /* UI */ = {
 			isa = PBXGroup;
 			children = (
 				F2E56E3F264AAA5200BC2B8B /* LaunchScreen.storyboard */,
 				F2E56E3A264AAA5100BC2B8B /* Main.storyboard */,
+				F2E56E76264B272600BC2B8B /* Main */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		F2E56E76264B272600BC2B8B /* Main */ = {
+			isa = PBXGroup;
+			children = (
 				F2E56E6B264AC06000BC2B8B /* MainViewController.swift */,
 			);
-			name = UI;
+			name = Main;
+			sourceTree = "<group>";
+		};
+		F2E56E79264B283F00BC2B8B /* Support */ = {
+			isa = PBXGroup;
+			children = (
+				F2E56E3D264AAA5200BC2B8B /* Assets.xcassets */,
+				F2E56E42264AAA5200BC2B8B /* Info.plist */,
+			);
+			path = Support;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -300,7 +308,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "buildNumber=$(/usr/libexec/PlistBuddy -c \"Print CFBundleVersion\" \"${SRCROOT}/TaRest/info.plist\")\nbuildNumber=$(($buildNumber + 1))\n/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $buildNumber\" \"${INFOPLIST_FILE}\"\n/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $buildNumber\" \"${SRCROOT}/TaRest/info.plist\"\n\n";
+			shellScript = "buildNumber=$(/usr/libexec/PlistBuddy -c \"Print CFBundleVersion\" \"${SRCROOT}/TaRest/Support/info.plist\")\nbuildNumber=$(($buildNumber + 1))\n/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $buildNumber\" \"${INFOPLIST_FILE}\"\n/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $buildNumber\" \"${SRCROOT}/TaRest/Support/info.plist\"\n\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -494,7 +502,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = C324576AHA;
-				INFOPLIST_FILE = TaRest/Info.plist;
+				INFOPLIST_FILE = TaRest/Support/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -514,7 +522,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = C324576AHA;
-				INFOPLIST_FILE = TaRest/Info.plist;
+				INFOPLIST_FILE = TaRest/Support/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
