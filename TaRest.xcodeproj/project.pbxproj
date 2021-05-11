@@ -3,18 +3,22 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 54;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		F2E56E35264AAA5100BC2B8B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2E56E34264AAA5100BC2B8B /* AppDelegate.swift */; };
 		F2E56E37264AAA5100BC2B8B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2E56E36264AAA5100BC2B8B /* SceneDelegate.swift */; };
-		F2E56E39264AAA5100BC2B8B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2E56E38264AAA5100BC2B8B /* ViewController.swift */; };
 		F2E56E3C264AAA5100BC2B8B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F2E56E3A264AAA5100BC2B8B /* Main.storyboard */; };
 		F2E56E3E264AAA5200BC2B8B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F2E56E3D264AAA5200BC2B8B /* Assets.xcassets */; };
 		F2E56E41264AAA5200BC2B8B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F2E56E3F264AAA5200BC2B8B /* LaunchScreen.storyboard */; };
 		F2E56E4C264AAA5200BC2B8B /* TaRestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2E56E4B264AAA5200BC2B8B /* TaRestTests.swift */; };
 		F2E56E57264AAA5200BC2B8B /* TaRestUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2E56E56264AAA5200BC2B8B /* TaRestUITests.swift */; };
+		F2E56E6C264AC06000BC2B8B /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2E56E6B264AC06000BC2B8B /* MainViewController.swift */; };
+		F2E56E6D264AC06000BC2B8B /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2E56E6B264AC06000BC2B8B /* MainViewController.swift */; };
+		F2E56E6E264AC06000BC2B8B /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2E56E6B264AC06000BC2B8B /* MainViewController.swift */; };
+		F2E56E72264B0A4F00BC2B8B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F2E56E3D264AAA5200BC2B8B /* Assets.xcassets */; };
+		F2E56E73264B0A5000BC2B8B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F2E56E3D264AAA5200BC2B8B /* Assets.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,7 +42,6 @@
 		F2E56E31264AAA5100BC2B8B /* TaRest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TaRest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F2E56E34264AAA5100BC2B8B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F2E56E36264AAA5100BC2B8B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		F2E56E38264AAA5100BC2B8B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		F2E56E3B264AAA5100BC2B8B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		F2E56E3D264AAA5200BC2B8B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F2E56E40264AAA5200BC2B8B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -49,6 +52,7 @@
 		F2E56E52264AAA5200BC2B8B /* TaRestUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TaRestUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F2E56E56264AAA5200BC2B8B /* TaRestUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaRestUITests.swift; sourceTree = "<group>"; };
 		F2E56E58264AAA5200BC2B8B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F2E56E6B264AC06000BC2B8B /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,13 +103,9 @@
 		F2E56E33264AAA5100BC2B8B /* TaRest */ = {
 			isa = PBXGroup;
 			children = (
-				F2E56E34264AAA5100BC2B8B /* AppDelegate.swift */,
-				F2E56E36264AAA5100BC2B8B /* SceneDelegate.swift */,
-				F2E56E38264AAA5100BC2B8B /* ViewController.swift */,
-				F2E56E3A264AAA5100BC2B8B /* Main.storyboard */,
-				F2E56E3D264AAA5200BC2B8B /* Assets.xcassets */,
-				F2E56E3F264AAA5200BC2B8B /* LaunchScreen.storyboard */,
-				F2E56E42264AAA5200BC2B8B /* Info.plist */,
+				F2E56E68264AADDB00BC2B8B /* Support */,
+				F2E56E69264ABF8A00BC2B8B /* Base App */,
+				F2E56E6A264AC03300BC2B8B /* UI */,
 			);
 			path = TaRest;
 			sourceTree = "<group>";
@@ -128,6 +128,34 @@
 			path = TaRestUITests;
 			sourceTree = "<group>";
 		};
+		F2E56E68264AADDB00BC2B8B /* Support */ = {
+			isa = PBXGroup;
+			children = (
+				F2E56E42264AAA5200BC2B8B /* Info.plist */,
+				F2E56E3D264AAA5200BC2B8B /* Assets.xcassets */,
+			);
+			name = Support;
+			sourceTree = "<group>";
+		};
+		F2E56E69264ABF8A00BC2B8B /* Base App */ = {
+			isa = PBXGroup;
+			children = (
+				F2E56E34264AAA5100BC2B8B /* AppDelegate.swift */,
+				F2E56E36264AAA5100BC2B8B /* SceneDelegate.swift */,
+			);
+			name = "Base App";
+			sourceTree = "<group>";
+		};
+		F2E56E6A264AC03300BC2B8B /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				F2E56E3F264AAA5200BC2B8B /* LaunchScreen.storyboard */,
+				F2E56E3A264AAA5100BC2B8B /* Main.storyboard */,
+				F2E56E6B264AC06000BC2B8B /* MainViewController.swift */,
+			);
+			name = UI;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -138,6 +166,7 @@
 				F2E56E2D264AAA5100BC2B8B /* Sources */,
 				F2E56E2E264AAA5100BC2B8B /* Frameworks */,
 				F2E56E2F264AAA5100BC2B8B /* Resources */,
+				F2E56E64264AAAAE00BC2B8B /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -207,7 +236,7 @@
 				};
 			};
 			buildConfigurationList = F2E56E2C264AAA5100BC2B8B /* Build configuration list for PBXProject "TaRest" */;
-			compatibilityVersion = "Xcode 9.3";
+			compatibilityVersion = "Xcode 12.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -241,6 +270,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F2E56E72264B0A4F00BC2B8B /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -248,19 +278,40 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F2E56E73264B0A5000BC2B8B /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		F2E56E64264AAAAE00BC2B8B /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "buildNumber=$(/usr/libexec/PlistBuddy -c \"Print CFBundleVersion\" \"${SRCROOT}/TaRest/info.plist\")\nbuildNumber=$(($buildNumber + 1))\n/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $buildNumber\" \"${INFOPLIST_FILE}\"\n/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $buildNumber\" \"${SRCROOT}/TaRest/info.plist\"\n\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		F2E56E2D264AAA5100BC2B8B /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F2E56E39264AAA5100BC2B8B /* ViewController.swift in Sources */,
 				F2E56E35264AAA5100BC2B8B /* AppDelegate.swift in Sources */,
 				F2E56E37264AAA5100BC2B8B /* SceneDelegate.swift in Sources */,
+				F2E56E6C264AC06000BC2B8B /* MainViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -269,6 +320,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F2E56E4C264AAA5200BC2B8B /* TaRestTests.swift in Sources */,
+				F2E56E6D264AC06000BC2B8B /* MainViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -277,6 +329,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F2E56E57264AAA5200BC2B8B /* TaRestUITests.swift in Sources */,
+				F2E56E6E264AC06000BC2B8B /* MainViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -366,13 +419,14 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
@@ -415,18 +469,20 @@
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 3;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -439,6 +495,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = C324576AHA;
 				INFOPLIST_FILE = TaRest/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -458,6 +515,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = C324576AHA;
 				INFOPLIST_FILE = TaRest/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
