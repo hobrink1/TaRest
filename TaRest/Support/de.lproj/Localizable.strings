@@ -1,0 +1,42 @@
+/* 
+  Localizable.strings
+  TaRest
+
+  Created by Hartwig Hopfenzitz on 12.05.21.
+  
+*/
+
+/*
+ 
+ Deutsch
+ 
+ */
+
+
+/**************************************************************************************************
+ *
+ * class InfoTabViewController
+ *
+ **************************************************************************************************/
+
+/* String to explain the current status of the authorization level of location Service */
+"Location-Status" = "Autorisierungsstatus Lokations-Service:";
+
+/* Main header for how to section */
+"Info-Main-Header" = "Bedienungshinweise:";
+
+/* Info section 1 */
+"Info-1-Header" = "Info 1 Header in Deutsch";
+"Info-1"        = "Info 1 Text in Deutsch. Dieser Text soll einen Zeilenumbruch verursachen und außerdem sollen neue Absätze eingefügt werden.\n\n... wie dieser hier\n\nund dieser...";
+
+/* Info section 2 */
+"Info-2-Header" = "Info 2 Header in Deutsch";
+"Info-2"        = "Info 2 Text in EDeutsch. Dieser Text soll einen Zeilenumbruch verursachen und außerdem sollen neue Absätze eingefügt werden.\n\n... wie dieser hier\n\nund dieser...";
+
+/* Data privacy */
+"Data-Privacy-Header" = "Data Privacy Header in English";
+"Data-Privacy"        = "Data-Privacy Text in Deutsch. Dieser Text soll einen Zeilenumbruch verursachen und außerdem sollen neue Absätze eingefügt werden.\n\n... wie dieser hier\n\nund dieser...";
+
+/* List of current error messages */
+"Info-Error-Messages" = "Letzte Systemmeldungen,\njüngste Meldung zuerst";
+"Info-No-Error-Messages" = "Bisher keine Systemmeldungen";

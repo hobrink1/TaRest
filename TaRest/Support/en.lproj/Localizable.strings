@@ -1,0 +1,42 @@
+/* 
+  Localizable.strings
+  TaRest
+
+  Created by Hartwig Hopfenzitz on 12.05.21.
+ 
+*/
+
+/*
+ 
+ English
+ 
+ */
+
+
+/**************************************************************************************************
+ *
+ * class InfoTabViewController
+ *
+ **************************************************************************************************/
+
+/* String to explain the current status of the authorization level of location Service */
+"Location-Status" = "Authorization of Location Services:";
+
+/* Main header for how to section */
+"Info-Main-Header" = "How To use this App:";
+
+/* Info section 1 */
+"Info-1-Header" = "Info 1 Header in English";
+"Info-1"        = "Info 1 Text in English. Text will wrap over several lines with some paragraphs.\n\n...like this\n\nand this";
+
+/* Info section 2 */
+"Info-2-Header" = "Info 2 Header in English";
+"Info-2"        = "Info 2 Text in English. Text will wrap over several lines with some paragraphs.\n\n...like this\n\nand this";
+
+/* Data privacy */
+"Data-Privacy-Header" = "Data Privacy Header in English";
+"Data-Privacy"        = "Data-Privacy Text in English. Text will wrap over several lines with some paragraphs.\n\n...like this\n\nand this";
+
+/* List of current error messages */
+"Info-Error-Messages" = "Last system messages,\nlatest message on top";
+"Info-No-Error-Messages" = "No system messages so far";

@@ -1,0 +1,27 @@
+
+/* Class = "UIButton"; normalTitle = "Deatailview"; ObjectID = "4Xs-Sp-gnT"; */
+"4Xs-Sp-gnT.normalTitle" = "Deatailview";
+
+/* Class = "UILabel"; text = "LabelButton"; ObjectID = "MQq-Wa-l4P"; */
+"MQq-Wa-l4P.text" = "LabelButton";
+
+/* Class = "UILabel"; text = "DetailView"; ObjectID = "RG6-tO-i29"; */
+"RG6-tO-i29.text" = "DetailView";
+
+/* Class = "UILabel"; text = "List of Restaurants"; ObjectID = "RRA-FW-3gE"; */
+"RRA-FW-3gE.text" = "List of Restaurants";
+
+/* Class = "UIButton"; normalTitle = "Deatailview"; ObjectID = "aNT-UY-3dG"; */
+"aNT-UY-3dG.normalTitle" = "Deatailview";
+
+/* Class = "UITabBarItem"; title = "Item"; ObjectID = "aeT-gi-OeY"; */
+"aeT-gi-OeY.title" = "Map";
+
+/* Class = "UITabBarItem"; title = "Item 1"; ObjectID = "czb-4R-qZg"; */
+"czb-4R-qZg.title" = "List";
+
+/* Class = "UITabBarItem"; title = "Info"; ObjectID = "fFt-of-IwS"; */
+"fFt-of-IwS.title" = "Info";
+
+/* Class = "UILabel"; text = "LabelTop"; ObjectID = "uB6-Sa-Hr6"; */
+"uB6-Sa-Hr6.text" = "LabelTop";
