@@ -12,7 +12,7 @@ import UIKit
 // MARK: -
 // MARK: - System Wide Constants
 // -------------------------------------------------------------------------------------------------
-let VersionLabel: String = "V0.0.1"
+let VersionLabel: String = "V0.0.2"
 
 
 // -------------------------------------------------------------------------------------------------
@@ -39,6 +39,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // start error list system
         ErrorList.unique.establishErrorList()
+        
+        // start Restaurant data
+        RestaurantData.unique.startRestaurantData()
         
         
         return true

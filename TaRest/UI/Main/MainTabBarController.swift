@@ -99,8 +99,8 @@ final class MainTabBarController: UITabBarController, UITabBarControllerDelegate
         
         // Do any additional setup after loading the view.
         
-        ErrorList.unique.add("MainTabBarController.viewDidLoad()", .info,
-                             "Just started")
+        // ErrorList.unique.add("MainTabBarController.viewDidLoad()", .info,
+        //                      "Just started")
         
         // restore the selcted tab
         self.selectedIndex = GlobalData.unique.UIMainTabBarSelectedTab

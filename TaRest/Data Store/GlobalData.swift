@@ -44,6 +44,7 @@ final class GlobalData: NSObject {
     // MARK: - Variables, NOT permanently stored
     // ---------------------------------------------------------------------------------------------
 
+    public var LocationServceAllowed : Bool = false
     
     
     // ---------------------------------------------------------------------------------------------
@@ -58,7 +59,16 @@ final class GlobalData: NSObject {
         }) }
     }
     
+    // This is the current sort strategy of ListTableViewController()
+    public var UIListTableViewSortStrategy: Int = 0 {
+        
+        didSet { self.DataQueue.async(flags: .barrier, execute: {
+            self.permanentStore.set(self.UIListTableViewSortStrategy,
+                                    forKey: "TaRest.UIListTableViewSortStrategy")
+        }) }
+    }
     
+
     
     // we restore the last map region. Initially we show whole Germany.
     // The values for center and span have been taken from a real device
@@ -113,7 +123,12 @@ final class GlobalData: NSObject {
             // the selected tab on MainTabBarController()
             self.UIMainTabBarSelectedTab = self.permanentStore.integer(
                 forKey: "TaRest.UIMainTabBarSelectedTab")
+           
             
+            // This is the current sort strategy of ListTableViewController()
+            self.UIListTableViewSortStrategy = self.permanentStore.integer(
+                forKey: "TaRest.UIListTableViewSortStrategy")
+           
             
             // restore the map region
             let mapCenterLatitude = self.permanentStore.double(
@@ -161,7 +176,7 @@ final class GlobalData: NSObject {
                 
                 NotificationCenter.default.post(Notification(name: .TaRest_GlobalDataRestored))
                  
-                ErrorList.unique.add("GlobalData.restoreGlobalData()", .info,"restoreGlobalData just posted .CoBaT_UIDataRestored")
+                ErrorList.unique.add("GlobalData.restoreGlobalData()", .info,"restoreGlobalData just posted .TaRest_GlobalDataRestored")
             })
         })
     }

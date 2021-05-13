@@ -14,9 +14,6 @@
 		F2E56E41264AAA5200BC2B8B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F2E56E3F264AAA5200BC2B8B /* LaunchScreen.storyboard */; };
 		F2E56E4C264AAA5200BC2B8B /* TaRestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2E56E4B264AAA5200BC2B8B /* TaRestTests.swift */; };
 		F2E56E57264AAA5200BC2B8B /* TaRestUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2E56E56264AAA5200BC2B8B /* TaRestUITests.swift */; };
-		F2E56E6C264AC06000BC2B8B /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2E56E6B264AC06000BC2B8B /* MainViewController.swift */; };
-		F2E56E6D264AC06000BC2B8B /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2E56E6B264AC06000BC2B8B /* MainViewController.swift */; };
-		F2E56E6E264AC06000BC2B8B /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2E56E6B264AC06000BC2B8B /* MainViewController.swift */; };
 		F2E56E72264B0A4F00BC2B8B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F2E56E3D264AAA5200BC2B8B /* Assets.xcassets */; };
 		F2E56E73264B0A5000BC2B8B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F2E56E3D264AAA5200BC2B8B /* Assets.xcassets */; };
 		F2E56E7C264BB78100BC2B8B /* Developer Notes.rtf in Resources */ = {isa = PBXBuildFile; fileRef = F2E56E7B264BB78100BC2B8B /* Developer Notes.rtf */; };
@@ -49,6 +46,21 @@
 		F2E56EC7264C702200BC2B8B /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2E56EC6264C702200BC2B8B /* MapViewController.swift */; };
 		F2E56EC8264C702200BC2B8B /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2E56EC6264C702200BC2B8B /* MapViewController.swift */; };
 		F2E56EC9264C702200BC2B8B /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2E56EC6264C702200BC2B8B /* MapViewController.swift */; };
+		F2E56ECB264D26D800BC2B8B /* flags.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2E56ECA264D26D800BC2B8B /* flags.swift */; };
+		F2E56ECC264D26D800BC2B8B /* flags.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2E56ECA264D26D800BC2B8B /* flags.swift */; };
+		F2E56ECD264D26D800BC2B8B /* flags.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2E56ECA264D26D800BC2B8B /* flags.swift */; };
+		F2E56ED0264D4FCD00BC2B8B /* ListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2E56ECF264D4FCD00BC2B8B /* ListTableViewCell.swift */; };
+		F2E56ED1264D4FCD00BC2B8B /* ListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2E56ECF264D4FCD00BC2B8B /* ListTableViewCell.swift */; };
+		F2E56ED2264D4FCD00BC2B8B /* ListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2E56ECF264D4FCD00BC2B8B /* ListTableViewCell.swift */; };
+		F2E56ED4264D517E00BC2B8B /* ListTableViewCellNoData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2E56ED3264D517E00BC2B8B /* ListTableViewCellNoData.swift */; };
+		F2E56ED5264D517E00BC2B8B /* ListTableViewCellNoData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2E56ED3264D517E00BC2B8B /* ListTableViewCellNoData.swift */; };
+		F2E56ED6264D517E00BC2B8B /* ListTableViewCellNoData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2E56ED3264D517E00BC2B8B /* ListTableViewCellNoData.swift */; };
+		F2E56ED8264D582B00BC2B8B /* RestaurantData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2E56ED7264D582B00BC2B8B /* RestaurantData.swift */; };
+		F2E56ED9264D582B00BC2B8B /* RestaurantData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2E56ED7264D582B00BC2B8B /* RestaurantData.swift */; };
+		F2E56EDA264D582B00BC2B8B /* RestaurantData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2E56ED7264D582B00BC2B8B /* RestaurantData.swift */; };
+		F2E56EDC264D65D600BC2B8B /* ListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2E56EDB264D65D600BC2B8B /* ListTableViewController.swift */; };
+		F2E56EDD264D65D600BC2B8B /* ListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2E56EDB264D65D600BC2B8B /* ListTableViewController.swift */; };
+		F2E56EDE264D65D600BC2B8B /* ListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2E56EDB264D65D600BC2B8B /* ListTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -81,7 +93,6 @@
 		F2E56E52264AAA5200BC2B8B /* TaRestUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TaRestUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F2E56E56264AAA5200BC2B8B /* TaRestUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaRestUITests.swift; sourceTree = "<group>"; };
 		F2E56E58264AAA5200BC2B8B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		F2E56E6B264AC06000BC2B8B /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		F2E56E7B264BB78100BC2B8B /* Developer Notes.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; path = "Developer Notes.rtf"; sourceTree = "<group>"; };
 		F2E56E83264BBBAD00BC2B8B /* GetRestaurantData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetRestaurantData.swift; sourceTree = "<group>"; };
 		F2E56E8A264BBE9E00BC2B8B /* ErrorList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorList.swift; sourceTree = "<group>"; };
@@ -100,6 +111,11 @@
 		F2E56EB8264C0E6000BC2B8B /* InfoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoTableViewCell.swift; sourceTree = "<group>"; };
 		F2E56EBC264C208D00BC2B8B /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		F2E56EC6264C702200BC2B8B /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		F2E56ECA264D26D800BC2B8B /* flags.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = flags.swift; sourceTree = "<group>"; };
+		F2E56ECF264D4FCD00BC2B8B /* ListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListTableViewCell.swift; sourceTree = "<group>"; };
+		F2E56ED3264D517E00BC2B8B /* ListTableViewCellNoData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListTableViewCellNoData.swift; sourceTree = "<group>"; };
+		F2E56ED7264D582B00BC2B8B /* RestaurantData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantData.swift; sourceTree = "<group>"; };
+		F2E56EDB264D65D600BC2B8B /* ListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -195,6 +211,7 @@
 				F2E56E3F264AAA5200BC2B8B /* LaunchScreen.storyboard */,
 				F2E56E3A264AAA5100BC2B8B /* Main.storyboard */,
 				F2E56EC0264C20C700BC2B8B /* Main */,
+				F2E56ECE264D4F9F00BC2B8B /* List */,
 				F2E56EC5264C6F8A00BC2B8B /* Map */,
 				F2E56E9F264C060B00BC2B8B /* Info */,
 			);
@@ -263,6 +280,8 @@
 		F2E56E88264BBE3C00BC2B8B /* Restaurant Data */ = {
 			isa = PBXGroup;
 			children = (
+				F2E56ED7264D582B00BC2B8B /* RestaurantData.swift */,
+				F2E56ECA264D26D800BC2B8B /* flags.swift */,
 			);
 			path = "Restaurant Data";
 			sourceTree = "<group>";
@@ -279,7 +298,6 @@
 		F2E56EC0264C20C700BC2B8B /* Main */ = {
 			isa = PBXGroup;
 			children = (
-				F2E56E6B264AC06000BC2B8B /* MainViewController.swift */,
 				F2E56EBC264C208D00BC2B8B /* MainTabBarController.swift */,
 			);
 			path = Main;
@@ -291,6 +309,16 @@
 				F2E56EC6264C702200BC2B8B /* MapViewController.swift */,
 			);
 			path = Map;
+			sourceTree = "<group>";
+		};
+		F2E56ECE264D4F9F00BC2B8B /* List */ = {
+			isa = PBXGroup;
+			children = (
+				F2E56EDB264D65D600BC2B8B /* ListTableViewController.swift */,
+				F2E56ECF264D4FCD00BC2B8B /* ListTableViewCell.swift */,
+				F2E56ED3264D517E00BC2B8B /* ListTableViewCellNoData.swift */,
+			);
+			path = List;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -456,14 +484,18 @@
 				F2E56EC7264C702200BC2B8B /* MapViewController.swift in Sources */,
 				F2E56E8F264BC12100BC2B8B /* GlobalData.swift in Sources */,
 				F2E56E35264AAA5100BC2B8B /* AppDelegate.swift in Sources */,
+				F2E56ECB264D26D800BC2B8B /* flags.swift in Sources */,
 				F2E56EBD264C208D00BC2B8B /* MainTabBarController.swift in Sources */,
 				F2E56E84264BBBAD00BC2B8B /* GetRestaurantData.swift in Sources */,
+				F2E56ED4264D517E00BC2B8B /* ListTableViewCellNoData.swift in Sources */,
 				F2E56EB9264C0E6000BC2B8B /* InfoTableViewCell.swift in Sources */,
 				F2E56EA1264C063200BC2B8B /* InfoTableViewController.swift in Sources */,
 				F2E56E93264BD91000BC2B8B /* Notification Name Extention.swift in Sources */,
 				F2E56E37264AAA5100BC2B8B /* SceneDelegate.swift in Sources */,
+				F2E56EDC264D65D600BC2B8B /* ListTableViewController.swift in Sources */,
+				F2E56ED8264D582B00BC2B8B /* RestaurantData.swift in Sources */,
 				F2E56E8B264BBE9E00BC2B8B /* ErrorList.swift in Sources */,
-				F2E56E6C264AC06000BC2B8B /* MainViewController.swift in Sources */,
+				F2E56ED0264D4FCD00BC2B8B /* ListTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -472,14 +504,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				F2E56EA2264C063200BC2B8B /* InfoTableViewController.swift in Sources */,
+				F2E56ED5264D517E00BC2B8B /* ListTableViewCellNoData.swift in Sources */,
 				F2E56EBA264C0E6000BC2B8B /* InfoTableViewCell.swift in Sources */,
+				F2E56EDD264D65D600BC2B8B /* ListTableViewController.swift in Sources */,
 				F2E56EBE264C208D00BC2B8B /* MainTabBarController.swift in Sources */,
 				F2E56EC8264C702200BC2B8B /* MapViewController.swift in Sources */,
+				F2E56ECC264D26D800BC2B8B /* flags.swift in Sources */,
+				F2E56ED9264D582B00BC2B8B /* RestaurantData.swift in Sources */,
+				F2E56ED1264D4FCD00BC2B8B /* ListTableViewCell.swift in Sources */,
 				F2E56E94264BD91000BC2B8B /* Notification Name Extention.swift in Sources */,
 				F2E56E8C264BBE9E00BC2B8B /* ErrorList.swift in Sources */,
 				F2E56E90264BC12100BC2B8B /* GlobalData.swift in Sources */,
 				F2E56E4C264AAA5200BC2B8B /* TaRestTests.swift in Sources */,
-				F2E56E6D264AC06000BC2B8B /* MainViewController.swift in Sources */,
 				F2E56E85264BBBAD00BC2B8B /* GetRestaurantData.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -489,14 +525,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				F2E56EA3264C063200BC2B8B /* InfoTableViewController.swift in Sources */,
+				F2E56ED6264D517E00BC2B8B /* ListTableViewCellNoData.swift in Sources */,
 				F2E56EBB264C0E6000BC2B8B /* InfoTableViewCell.swift in Sources */,
+				F2E56EDE264D65D600BC2B8B /* ListTableViewController.swift in Sources */,
 				F2E56EBF264C208D00BC2B8B /* MainTabBarController.swift in Sources */,
 				F2E56EC9264C702200BC2B8B /* MapViewController.swift in Sources */,
+				F2E56ECD264D26D800BC2B8B /* flags.swift in Sources */,
+				F2E56EDA264D582B00BC2B8B /* RestaurantData.swift in Sources */,
+				F2E56ED2264D4FCD00BC2B8B /* ListTableViewCell.swift in Sources */,
 				F2E56E95264BD91000BC2B8B /* Notification Name Extention.swift in Sources */,
 				F2E56E8D264BBE9E00BC2B8B /* ErrorList.swift in Sources */,
 				F2E56E91264BC12100BC2B8B /* GlobalData.swift in Sources */,
 				F2E56E57264AAA5200BC2B8B /* TaRestUITests.swift in Sources */,
-				F2E56E6E264AC06000BC2B8B /* MainViewController.swift in Sources */,
 				F2E56E86264BBBAD00BC2B8B /* GetRestaurantData.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

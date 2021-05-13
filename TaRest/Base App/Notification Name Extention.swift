@@ -34,6 +34,14 @@ extension Notification.Name {
     // Event: GlobalData() has restored the permanently stored vaules
     static let TaRest_GlobalDataRestored = Notification.Name(rawValue: "org.HoBrink.TaRest.GlobalDataRestored")
 
+    // ---------------------------------------------------------------------------------------------
+    // MARK: -
+    // MARK: - Restaurant Data
+    // ---------------------------------------------------------------------------------------------
+
+    // Event: GlobalData() has restored the permanently stored vaules
+    static let TaRest_NewRestaurantDataAvailable = Notification.Name(rawValue: "org.HoBrink.TaRest.NewRestaurantDataAvailable")
+
 
     
 }

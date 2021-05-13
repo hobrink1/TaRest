@@ -30,20 +30,6 @@ final class InfoTableViewCell: UITableViewCell {
     @IBOutlet weak var LabelTop: UILabel!
     @IBOutlet weak var LabelBottom: UILabel!
     
-    // ------------------------------------------------------------------------------
-    // MARK: - Life Cycle
-    // ------------------------------------------------------------------------------
-    
-    /**
-     -----------------------------------------------------------------------------------------------
-     
-     awakeFromNib()
-     
-     -----------------------------------------------------------------------------------------------
-     */
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
+
     
 }

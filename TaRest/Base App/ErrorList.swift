@@ -363,9 +363,9 @@ final class ErrorList: NSObject {
                     // create new file (even if old one exist) with the content of the data object
                     myFilemanager.createFile(atPath: pListFilePath, contents: dataToWrite, attributes: nil)
                     
-                    #if DEBUG
-                    NSLog("\(self.shortNameLog).writeMyDefaults(): just wrote WIS_Defaults to file")
-                    #endif
+//                    #if DEBUG
+//                    NSLog("\(self.shortNameLog).writeMyDefaults(): just wrote myDefaults to file")
+//                    #endif
                                         
                 } catch {
                     

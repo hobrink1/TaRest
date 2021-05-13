@@ -40,3 +40,13 @@
 /* List of current error messages */
 "Info-Error-Messages" = "Letzte Systemmeldungen,\njüngste Meldung zuerst";
 "Info-No-Error-Messages" = "Bisher keine Systemmeldungen";
+
+
+/**************************************************************************************************
+ *
+ * class ListTabViewController
+ *
+ **************************************************************************************************/
+
+/* Message that we do not have any restaurant data so far */
+"List-No-Data-Sofar" = "Leider\n\nhaben wir keine Restaurant Daten, die wir hier zeigen können.\n\nManchmal dauert der Datenabruf etwas länger als geplant.";
