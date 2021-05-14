@@ -61,6 +61,12 @@
 		F2E56EDC264D65D600BC2B8B /* ListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2E56EDB264D65D600BC2B8B /* ListTableViewController.swift */; };
 		F2E56EDD264D65D600BC2B8B /* ListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2E56EDB264D65D600BC2B8B /* ListTableViewController.swift */; };
 		F2E56EDE264D65D600BC2B8B /* ListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2E56EDB264D65D600BC2B8B /* ListTableViewController.swift */; };
+		F2E56EE4264EAAF700BC2B8B /* String Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2E56EE3264EAAF700BC2B8B /* String Extension.swift */; };
+		F2E56EE5264EAAF700BC2B8B /* String Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2E56EE3264EAAF700BC2B8B /* String Extension.swift */; };
+		F2E56EE6264EAAF700BC2B8B /* String Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2E56EE3264EAAF700BC2B8B /* String Extension.swift */; };
+		F2E56EE9264F0A0000BC2B8B /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2E56EE8264F0A0000BC2B8B /* DetailViewController.swift */; };
+		F2E56EEA264F0A0000BC2B8B /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2E56EE8264F0A0000BC2B8B /* DetailViewController.swift */; };
+		F2E56EEB264F0A0000BC2B8B /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2E56EE8264F0A0000BC2B8B /* DetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -116,6 +122,8 @@
 		F2E56ED3264D517E00BC2B8B /* ListTableViewCellNoData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListTableViewCellNoData.swift; sourceTree = "<group>"; };
 		F2E56ED7264D582B00BC2B8B /* RestaurantData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantData.swift; sourceTree = "<group>"; };
 		F2E56EDB264D65D600BC2B8B /* ListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListTableViewController.swift; sourceTree = "<group>"; };
+		F2E56EE3264EAAF700BC2B8B /* String Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String Extension.swift"; sourceTree = "<group>"; };
+		F2E56EE8264F0A0000BC2B8B /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -200,6 +208,7 @@
 				F2E56E34264AAA5100BC2B8B /* AppDelegate.swift */,
 				F2E56E36264AAA5100BC2B8B /* SceneDelegate.swift */,
 				F2E56E92264BD91000BC2B8B /* Notification Name Extention.swift */,
+				F2E56EE3264EAAF700BC2B8B /* String Extension.swift */,
 				F2E56E8A264BBE9E00BC2B8B /* ErrorList.swift */,
 			);
 			path = "Base App";
@@ -214,6 +223,7 @@
 				F2E56ECE264D4F9F00BC2B8B /* List */,
 				F2E56EC5264C6F8A00BC2B8B /* Map */,
 				F2E56E9F264C060B00BC2B8B /* Info */,
+				F2E56EE7264F09E100BC2B8B /* Detail */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -319,6 +329,14 @@
 				F2E56ED3264D517E00BC2B8B /* ListTableViewCellNoData.swift */,
 			);
 			path = List;
+			sourceTree = "<group>";
+		};
+		F2E56EE7264F09E100BC2B8B /* Detail */ = {
+			isa = PBXGroup;
+			children = (
+				F2E56EE8264F0A0000BC2B8B /* DetailViewController.swift */,
+			);
+			path = Detail;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -482,10 +500,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				F2E56EC7264C702200BC2B8B /* MapViewController.swift in Sources */,
+				F2E56EE9264F0A0000BC2B8B /* DetailViewController.swift in Sources */,
 				F2E56E8F264BC12100BC2B8B /* GlobalData.swift in Sources */,
 				F2E56E35264AAA5100BC2B8B /* AppDelegate.swift in Sources */,
 				F2E56ECB264D26D800BC2B8B /* flags.swift in Sources */,
 				F2E56EBD264C208D00BC2B8B /* MainTabBarController.swift in Sources */,
+				F2E56EE4264EAAF700BC2B8B /* String Extension.swift in Sources */,
 				F2E56E84264BBBAD00BC2B8B /* GetRestaurantData.swift in Sources */,
 				F2E56ED4264D517E00BC2B8B /* ListTableViewCellNoData.swift in Sources */,
 				F2E56EB9264C0E6000BC2B8B /* InfoTableViewCell.swift in Sources */,
@@ -505,10 +525,12 @@
 			files = (
 				F2E56EA2264C063200BC2B8B /* InfoTableViewController.swift in Sources */,
 				F2E56ED5264D517E00BC2B8B /* ListTableViewCellNoData.swift in Sources */,
+				F2E56EE5264EAAF700BC2B8B /* String Extension.swift in Sources */,
 				F2E56EBA264C0E6000BC2B8B /* InfoTableViewCell.swift in Sources */,
 				F2E56EDD264D65D600BC2B8B /* ListTableViewController.swift in Sources */,
 				F2E56EBE264C208D00BC2B8B /* MainTabBarController.swift in Sources */,
 				F2E56EC8264C702200BC2B8B /* MapViewController.swift in Sources */,
+				F2E56EEA264F0A0000BC2B8B /* DetailViewController.swift in Sources */,
 				F2E56ECC264D26D800BC2B8B /* flags.swift in Sources */,
 				F2E56ED9264D582B00BC2B8B /* RestaurantData.swift in Sources */,
 				F2E56ED1264D4FCD00BC2B8B /* ListTableViewCell.swift in Sources */,
@@ -526,10 +548,12 @@
 			files = (
 				F2E56EA3264C063200BC2B8B /* InfoTableViewController.swift in Sources */,
 				F2E56ED6264D517E00BC2B8B /* ListTableViewCellNoData.swift in Sources */,
+				F2E56EE6264EAAF700BC2B8B /* String Extension.swift in Sources */,
 				F2E56EBB264C0E6000BC2B8B /* InfoTableViewCell.swift in Sources */,
 				F2E56EDE264D65D600BC2B8B /* ListTableViewController.swift in Sources */,
 				F2E56EBF264C208D00BC2B8B /* MainTabBarController.swift in Sources */,
 				F2E56EC9264C702200BC2B8B /* MapViewController.swift in Sources */,
+				F2E56EEB264F0A0000BC2B8B /* DetailViewController.swift in Sources */,
 				F2E56ECD264D26D800BC2B8B /* flags.swift in Sources */,
 				F2E56EDA264D582B00BC2B8B /* RestaurantData.swift in Sources */,
 				F2E56ED2264D4FCD00BC2B8B /* ListTableViewCell.swift in Sources */,

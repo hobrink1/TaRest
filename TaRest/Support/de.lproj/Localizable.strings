@@ -50,3 +50,18 @@
 
 /* Message that we do not have any restaurant data so far */
 "List-No-Data-Sofar" = "Leider\n\nhaben wir keine Restaurant Daten, die wir hier zeigen können.\n\nManchmal dauert der Datenabruf etwas länger als geplant.";
+
+
+/**************************************************************************************************
+ *
+ * methode RestaurantData.getOpenCloseString()
+ *
+ **************************************************************************************************/
+
+/* suitable phrase for open / close status */
+"OpenCloseString-unknown"       = "Keine Zeiten verfügbar";
+"OpenCloseString-closed today"  = "Heute geschlossen";
+"OpenCloseString-closed"        = "Geschlossen";
+"OpenCloseString-opens soon"    = "Öffnet bald";
+"OpenCloseString-open"          = "Offen";
+"OpenCloseString-closes soon"   = "Schließt bald";
