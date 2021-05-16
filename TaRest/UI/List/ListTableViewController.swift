@@ -379,7 +379,7 @@ final class ListTableViewController: UITableViewController, UISearchResultsUpdat
     override func viewDidAppear(_ animated: Bool) {
         super .viewDidAppear(animated)
         
-        // add observer to recognise if user selcted new state
+        // add observer to recognise new restaurants
         if let observer = newRestaurantDataAvailableObserver {
             NotificationCenter.default.removeObserver(observer)
         }
@@ -612,11 +612,7 @@ final class ListTableViewController: UITableViewController, UISearchResultsUpdat
 
             // set the index to show
             destinationViewController.indexOfRestaurantToShowDetails = self.indexOfRestaurantToShowDetails
-
         }
-        
-        
     }
-     
     
 }

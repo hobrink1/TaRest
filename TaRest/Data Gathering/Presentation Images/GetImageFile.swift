@@ -1,46 +1,52 @@
 //
-//  GetRestaurantData.swift
+//  GetImageFile.swift
 //  TaRest
 //
-//  Created by Hartwig Hopfenzitz on 12.05.21.
+//  Created by Hartwig Hopfenzitz on 16.05.21.
 //
 
 import Foundation
+import UIKit
 
 
 // -------------------------------------------------------------------------------------------------
 // MARK: -
-// MARK: - Get Restaurant Data
+// MARK: - Ret Restaurant Data
 // -------------------------------------------------------------------------------------------------
-final class GetRestaurantData: NSObject {
-    
-    // ---------------------------------------------------------------------------------------------
-    // MARK: - Singleton
-    // ---------------------------------------------------------------------------------------------
-    static let unique = GetRestaurantData()
+final class GetImageFile: NSObject {
     
     // ---------------------------------------------------------------------------------------------
     // MARK: - Class Properties
     // ---------------------------------------------------------------------------------------------
-    let downloadURL: String = "https://restaurants-service-trial-day.herokuapp.com/restaurants"
     
     // ---------------------------------------------------------------------------------------------
-    // MARK: - GetRestaurantData API
+    // MARK: - GetImageFile API
     // ---------------------------------------------------------------------------------------------
+    /**
+     -----------------------------------------------------------------------------------------------
+     
+     downloads a file asynchronisly and stores it
+     
+     -----------------------------------------------------------------------------------------------
+     
+     - Parameters:
+        - referenceName: usually the name of the restaurant
+        - URL: the absolute location of the image file
+     - Returns:
+     
+     */
     
-    
-    
-    public func downloadRestaurantData() {
+    public func downloadImageData(referenceName: String, downloadURL: String) {
         
         // build a valid URL
-        if let url = URL(string: self.downloadURL) {
+        if let url = URL(string: downloadURL) {
             
             // build the task and define the completion handler
             let task = URLSession.shared.dataTask(
                 with: url,
                 completionHandler: { data, response, error in
                     
-                    ErrorList.unique.add("GetRestaurantData.downloadRestaurantData()", .info,
+                    ErrorList.unique.add("GetImageFile.downloadImageData()", .info,
                                          ".completionHandler just started")
                     
                     // check if there are errors
@@ -61,8 +67,9 @@ final class GetRestaurantData: NSObject {
                                     
                                     // check the mime type
                                     //if mimeType == "text/plain" {
-                                    if mimeType == "application/json" {
-
+                                    //if mimeType == "application/json" {
+                                        if mimeType == "image/png" {
+     
                                         // right mime type, go ahead
                                         
                                         // check the data
@@ -72,43 +79,43 @@ final class GetRestaurantData: NSObject {
                                             
                                             // convert it to string and print it (used for testing AND
                                             // for quickType webside to generate the "JSON RKI ....swift" files
-                                            print("\(String(data: data!, encoding: .utf8) ?? "Convertion data to string failed")")
+                                            //print("\(String(data: data!, encoding: .utf8) ?? "Convertion data to string failed")")
                                             
                                             // handle the content
-                                            self.handleNewContent(data!)
+                                            self.handleNewContent(data!, reference: referenceName)
                                             
                                         } else {
                                             
                                             // no valid data, log message and return
-                                            ErrorList.unique.add("GetRestaurantData.downloadRestaurantData()", .error, "data == nil, no valid data, return")
+                                            ErrorList.unique.add("GetImageFile.downloadImageData()", .error, "data == nil, no valid data, return")
                                             return
                                         }
                                         
                                     } else {
                                         
                                         // not the right mimeType, log message and return
-                                        ErrorList.unique.add("GetRestaurantData.downloadRestaurantData()", .error, "wrong mimeType (\"\(mimeType)\" instead of \"application/json\"), return")
+                                        ErrorList.unique.add("GetImageFile.downloadImageData()", .error, "wrong mimeType (\"\(mimeType)\" instead of \"application/json\"), return")
                                         return
                                     }
                                     
                                 } else {
                                     
                                     // no valid mimeType, log message and return
-                                    ErrorList.unique.add("GetRestaurantData.downloadRestaurantData()", .error, "no mimeType in response, return")
+                                    ErrorList.unique.add("GetImageFile.downloadImageData()", .error, "no mimeType in response, return")
                                     return
                                 }
                                 
                             } else {
                                 
                                 // not a good status, log message and return
-                                ErrorList.unique.add("GetRestaurantData.downloadRestaurantData()", .error, "Server responded with error status: \(httpResponse.statusCode), return")
+                                ErrorList.unique.add("GetImageFile.downloadImageData()", .error, "Server responded with error status: \(httpResponse.statusCode), return")
                                 return
                             }
                             
                         } else {
                             
                             // no valid response, log message and return
-                            ErrorList.unique.add("GetRestaurantData.downloadRestaurantData()", .error, "has no valid HTTP response, return")
+                            ErrorList.unique.add("GetImageFile.downloadImageData()", .error, "has no valid HTTP response, return")
                             return
                         }
                         
@@ -118,13 +125,13 @@ final class GetRestaurantData: NSObject {
                         if let myError = error  {
                             
                             // valid errorCode, call the handler and return
-                            ErrorList.unique.add("GetRestaurantData.downloadRestaurantData()", .error, " handleServerError(), \(myError.localizedDescription)")
+                            ErrorList.unique.add("GetImageFile.downloadImageData()", .error, " handleServerError(), \(myError.localizedDescription)")
                             return
                             
                         } else {
                             
                             // no valid error code, log message and return
-                            ErrorList.unique.add("GetRestaurantData.downloadRestaurantData()", .error, "dataTask came back with error which is not nil, but no valid errorCode, return")
+                            ErrorList.unique.add("GetImageFile.downloadImageData()", .error, "dataTask came back with error which is not nil, but no valid errorCode, return")
                             return
                         }
                     }
@@ -136,7 +143,7 @@ final class GetRestaurantData: NSObject {
         } else {
             
             // no valid URL, log message and return
-            ErrorList.unique.add("GetRestaurantData.downloadRestaurantData()", .error, "no valid URL, return")
+            ErrorList.unique.add("GetImageFile.downloadImageData()", .error, "no valid URL, return")
             return
         }
 
@@ -162,98 +169,26 @@ final class GetRestaurantData: NSObject {
     - Returns: nothing
     */
 
-    private func handleNewContent( _ data: Data) {
+    private func handleNewContent( _ data: Data, reference: String) {
         
         // report start
         ErrorList.unique.add("GetRestaurantData.handleNewContent()", .info, "handleNewContent just started")
         
-        
-        do {
-             
-            // try to decode the JSON data
-            let newData = try newJSONDecoder().decode([TaRestElement].self, from: data)
+        // try to decode the JSON data
+        if let newImage = UIImage(data: data) {
             
             // just reporting, no errors occure
             ErrorList.unique.add("GetRestaurantData.handleNewContent()", .info, " after decoding")
             
-            // check if the data is valid
-            if newData.isEmpty == false {
-                
-                // this will hold all image URLs
-                var NameAndImageURLDic: [String : String] = [:]
-                   
-                // we will provide an array of the new restaurants
-                var newDataArray: [RestaurantData.DataStruct] = []
-                
-                // walk over data and build array
-                for singleItem in newData {
-                    
-                    // first step: translate the kittchen type phrases into a single string of flags
-                    var newFlags: String = ""
-                    
-                    // we translate the kittchen type by a loop with a switch statement
-                    for singleKitchen in singleItem.kitchenTypes {
-                        
-                        switch singleKitchen {
-                        
-                        case "thai":
-                            newFlags.append("🇹🇭")
-                            
-                        case "italian":
-                            newFlags.append("🇮🇹")
-                            
-                        case "american":
-                            newFlags.append("🇺🇸")
-                            
-                        case "german":
-                            newFlags.append("🇩🇪")
-                            
-                        case "chinese":
-                            newFlags.append("🇨🇳")
-                            
-                        default:
-                            ErrorList.unique.add("GetRestaurantData.handleNewContent()", .error, "Unknown kittchenType \"\(singleKitchen)\"")
-                        }
-                    }
-                    
-                    
-                    // second: Convert the array of strings into our internal data format
-                    let newOpeningHours = self.convertOpenHoursStringArray(singleItem.openinghours)
-                    
-                    // third: the locations; we use our default coordinate (mid of Berlin) if not valid
-                    let newLatitude = Double(singleItem.location.lat) ?? 52.453730238865944
-                    let newLongitude = Double(singleItem.location.lon) ?? 13.445109940799426
-                    
-                    // fifth: build the new data set and append it
-                    let newDataSet = RestaurantData.DataStruct(singleItem.name,
-                                                               "", "",
-                                                               newFlags,
-                                                               newLatitude,
-                                                               newLongitude,
-                                                               newOpeningHours)
-                    
-                    newDataArray.append(newDataSet)
-                    
-                    // sixth: store the URL for the image
-                    NameAndImageURLDic[singleItem.name] = singleItem.presentationImage
-                    
-                }
-                
-                // report the new data
-                RestaurantData.unique.handleNewRestaurantData(newDataArray, NameAndImageURLDic)
-                
-                ErrorList.unique.add("GetRestaurantData.handleNewContent()", .info, "done")
-                
-            } else {
-                
-                ErrorList.unique.add("GetRestaurantData.handleNewContent()", .error, "data were empty, do nothing")
-            }
-             
-        } catch let error as NSError {
+            RestaurantData.unique.handleSingleImageDownload(referenceName: reference, newImage: newImage)
             
-            ErrorList.unique.add("GetRestaurantData.handleNewContent()", .error, "JSON decoder failed: error: \"\(error.description)\", return")
-            return
+        } else {
+            
+            // just reporting, no errors occure
+            ErrorList.unique.add("GetRestaurantData.handleNewContent()", .error, "UIImage from data failed for \"\(reference)\"")
         }
+        
+        
     }
     
     

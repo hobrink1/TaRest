@@ -25,3 +25,6 @@
 
 /* Class = "UILabel"; text = "LabelTop"; ObjectID = "uB6-Sa-Hr6"; */
 "uB6-Sa-Hr6.text" = "LabelTop";
+
+/* Class = "UILabel"; text = "Opening hours"; ObjectID = "d4w-DH-r7W"; */
+"d4w-DH-r7W.text" = "Öffnungszeiten   ";

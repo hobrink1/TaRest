@@ -70,29 +70,32 @@ final class GlobalData: NSObject {
     
 
     
-    // we restore the last map region. Initially we show whole Germany.
+    // we restore the last map region. Initially we show whole Berlin.
     // The values for center and span have been taken from a real device
     public var UIMapLastCenterCoordinate: CLLocationCoordinate2D =
-        CLLocationCoordinate2D(latitude: 51.117027000000036,
-                               longitude: 10.333652) {
+        CLLocationCoordinate2D(latitude: 52.453730238865944,
+                               longitude: 13.445109940799426) {
         
         didSet { self.DataQueue.async(flags: .barrier, execute: {
             self.permanentStore.set(self.UIMapLastCenterCoordinate.latitude,
                                     forKey: "TaRest.UIMapLastCenterCoordinate.latitude")
             self.permanentStore.set(self.UIMapLastCenterCoordinate.longitude,
                                     forKey: "TaRest.UIMapLastCenterCoordinate.longitude")
+            //print("UIMapLastCenterCoordinate: \(self.UIMapLastCenterCoordinate)")
         }) }
     }
     
     public var UIMapLastSpan: MKCoordinateSpan =
-        MKCoordinateSpan(latitudeDelta: 9.589147244505277,
-                         longitudeDelta: 10.026110459526336) {
+    MKCoordinateSpan(latitudeDelta: 1.0,
+                     longitudeDelta: 1.0) {
         
         didSet { self.DataQueue.async(flags: .barrier, execute: {
             self.permanentStore.set(self.UIMapLastSpan.latitudeDelta,
                                     forKey: "TaRest.UIMapLastSpan.latitudeDelta")
             self.permanentStore.set(self.UIMapLastSpan.longitudeDelta,
                                     forKey: "TaRest.UIMapLastSpan.longitudeDelta")
+            //print("UIMapLastSpan: \(self.UIMapLastSpan)")
+
         }) }
     }
     

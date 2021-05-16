@@ -65,3 +65,19 @@
 "OpenCloseString-opens soon"    = "Öffnet bald";
 "OpenCloseString-open"          = "Offen";
 "OpenCloseString-closes soon"   = "Schließt bald";
+
+
+/**************************************************************************************************
+ *
+ * methode RestaurantData.getDataForDetail()
+ *
+ **************************************************************************************************/
+
+/* several translations */
+"Sun"       = "Sonntag:";
+"Mon"       = "Montag:";
+"Tue"       = "Dienstag:";
+"Wed"       = "Mittwoch:";
+"Thu"       = "Donnerstag:";
+"Fri"       = "Freitag:";
+"Sat"       = "Samstag:";

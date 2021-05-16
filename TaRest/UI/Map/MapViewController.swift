@@ -25,10 +25,21 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     // the oberserver have to be released, otherwise there wil be a memory leak.
     // this variable were set in "ViewDidApear()" and released in "ViewDidDisappear()"
     private var GlobalDataRestoredObserver: NSObjectProtocol?
+    private var newRestaurantDataAvailableObserver: NSObjectProtocol?
+    private var didEnterBackgroundObserver: NSObjectProtocol?
+    
     
     // int to mark the current selected content
     private var myMapContentMark: Int = 0
     
+    // this will hold dictonary of the annotation name and the index of the restaurant in RestaurantData.DataArray[]
+    // we use this to call the detailViewController
+    private var annotationIndexDic: [String : Int] = [:]
+    
+    // we use this variable to indicate the called detailViewController, which content it should show (segue)
+    private var indexOfRestaurantToShowDetails : Int = -1
+    private let segueShowDetailFromMap : String = "ShowDetailFromMap"
+
     // ---------------------------------------------------------------------------------------------
     // MARK: - UI Outlets
     // ---------------------------------------------------------------------------------------------
@@ -303,6 +314,133 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     }
 
     
+    // ---------------------------------------------------------------------------------------------
+    // MARK: -
+    // MARK: - MapKit Delegate
+    // ---------------------------------------------------------------------------------------------
+
+    /**
+     -----------------------------------------------------------------------------------------------
+     
+     
+     
+     -----------------------------------------------------------------------------------------------
+     
+     - Parameters:
+     - :
+     
+     - Returns:
+     
+     */
+    private func refreshMapAnnotations() {
+        
+        
+        // get the current restaurant data
+        let newData = RestaurantData.unique.getDataForMap()
+        
+        // we build all annotations in an array
+        var newAnnotations: [MKPointAnnotation] = []
+        
+        // this will be the new dictonary of the restaurant names and indexes
+        var newDictonary: [String : Int] = [:]
+        
+        // build the new annotations
+        for item in newData {
+            
+            // build the annotation and set the properties
+            let newAnnotation = MKPointAnnotation()
+            newAnnotation.coordinate = item.coordinate
+            newAnnotation.title = item.name
+            newAnnotation.subtitle = item.isOpen
+
+            // add it to the array of new annotations
+            newAnnotations.append(newAnnotation)
+            
+            // append a dictonary entry. "item.Index" is the index of the restaurant in RestaurantData.DataArray[]
+            newDictonary[item.name] = item.index
+        }
+        
+        // replace the annotations, as we change the UI we do it on main threat
+        DispatchQueue.main.async(execute: {
+            
+            // first remove all old annotations
+            let myOldAnnotations = self.MyMapView.annotations.filter( { $0 is MKPointAnnotation})
+            if myOldAnnotations.isEmpty == false {
+                self.MyMapView.removeAnnotations(myOldAnnotations)
+            }
+            
+            // exchange the dictonary
+            self.annotationIndexDic = newDictonary
+            
+            // add the new annotations
+            self.MyMapView.addAnnotations(newAnnotations)
+        })
+    }
+    
+    
+    
+    /**
+     -----------------------------------------------------------------------------------------------
+     
+     viewFor annotation:
+     
+     here used to set the tintColor to our AccentColor and set the symbol to our restaurant sign
+     
+     -----------------------------------------------------------------------------------------------
+     */
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        
+        // get a view
+        let annotationView = MKMarkerAnnotationView(annotation: annotation, reuseIdentifier: "MyAnnotationView")
+        
+        // set color and image
+        annotationView.markerTintColor = UIColor(named: "AccentColor") ?? UIColor.systemRed
+        annotationView.glyphImage = UIImage(named: "Annotation image 64")
+        
+        // we set a cluster identifier, which might be useful
+        annotationView.clusteringIdentifier = "TaRest"
+        
+        // we want the subtitle visible
+        annotationView.subtitleVisibility = .visible
+        
+        // and we want a call out ...
+        annotationView.canShowCallout = true
+        
+        // ... with a button indicator
+        let myButton : UIButton = UIButton(type: .detailDisclosure)
+        annotationView.rightCalloutAccessoryView = myButton
+        
+        
+        // return what we have
+        return annotationView
+    }
+    
+    /**
+     -----------------------------------------------------------------------------------------------
+     
+     
+     
+     -----------------------------------------------------------------------------------------------
+     
+     - Parameters:
+     - :
+     
+     - Returns:
+     
+     */
+    func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
+        
+        if let title = view.annotation?.title {
+            
+            if let possibleIndex = self.annotationIndexDic[title!] {
+                
+                self.indexOfRestaurantToShowDetails = possibleIndex
+                
+                performSegue(withIdentifier: self.segueShowDetailFromMap, sender: self)
+            }
+        }
+    }
+
     
     // ---------------------------------------------------------------------------------------------
     // MARK: -
@@ -336,6 +474,10 @@ class MapViewController: UIViewController, MKMapViewDelegate {
          
         // build the map region to display and show it on the map
         self.restoreMapSettings()
+        
+        // refresh the annotations
+        self.refreshMapAnnotations()
+
     }
     
     /**
@@ -347,6 +489,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
      */
     override func viewDidAppear(_ animated: Bool) {
         super .viewDidAppear(animated)
+        
         
         // add observer to recognise if gloabal data has restored its values
         if let observer = self.GlobalDataRestoredObserver {
@@ -364,6 +507,44 @@ class MapViewController: UIViewController, MKMapViewDelegate {
                 
                 self.restoreMapSettings()
             })
+        
+        // observer if new restaurant data available
+        if let observer = self.newRestaurantDataAvailableObserver {
+            NotificationCenter.default.removeObserver(observer)
+        }
+        newRestaurantDataAvailableObserver = NotificationCenter.default.addObserver(
+            forName: .TaRest_NewRestaurantDataAvailable,
+            object: nil,
+            queue: OperationQueue.main,
+            using: { Notification in
+                
+                ErrorList.unique.add("MapViewController.newRestaurantDataAvailableObserver()", .info,
+                                     "just recieved signal .TaRest_NewRestaurantDataAvailable, call refreshMapAnnotations()")
+
+                self.refreshMapAnnotations()
+            })
+        
+        
+        if let observer = self.didEnterBackgroundObserver {
+            NotificationCenter.default.removeObserver(observer)
+        }
+        didEnterBackgroundObserver = NotificationCenter.default.addObserver(
+            forName: UIApplication.didEnterBackgroundNotification,
+            object: nil,
+            queue: OperationQueue.main,
+            using: { Notification in
+                
+                ErrorList.unique.add("MapViewController.didEnterBackgroundObserver()", .info,
+                                     "just recieved signal .didEnterBackgroundObserver, call saveMapSettings()")
+
+                self.saveMapSettings()
+            })
+
+        
+        
+        // refresh the annotations
+        self.refreshMapAnnotations()
+
     }
  
     /**
@@ -377,10 +558,20 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         super .viewDidDisappear(animated)
         
         // remove the observer if set
-         if let observer = GlobalDataRestoredObserver {
-            NotificationCenter.default.removeObserver(observer)
-        }
+        if let observer = self.GlobalDataRestoredObserver {
+           NotificationCenter.default.removeObserver(observer)
+       }
 
+        if let observer = self.newRestaurantDataAvailableObserver {
+           NotificationCenter.default.removeObserver(observer)
+       }
+        
+        if let observer = self.didEnterBackgroundObserver {
+           NotificationCenter.default.removeObserver(observer)
+       }
+
+        
+        
         // save the center coordinate and span persistent
         self.saveMapSettings()
 
@@ -396,9 +587,18 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     deinit {
         
         // remove the observer if set
-        if let observer = GlobalDataRestoredObserver {
-            NotificationCenter.default.removeObserver(observer)
-        }
+        if let observer = self.GlobalDataRestoredObserver {
+           NotificationCenter.default.removeObserver(observer)
+       }
+
+        if let observer = self.newRestaurantDataAvailableObserver {
+           NotificationCenter.default.removeObserver(observer)
+       }
+
+        if let observer = self.didEnterBackgroundObserver {
+           NotificationCenter.default.removeObserver(observer)
+       }
+
 
         // save the center coordinate and span persistent
         self.saveMapSettings()
@@ -407,19 +607,33 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     
     
     
-//     ---------------------------------------------------------------------------------------------
-//     MARK: - Navigation
-//     ---------------------------------------------------------------------------------------------
-//
-//        // In a storyboard-based application, you will often want to do a little preparation before navigation
-//        override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//            // Get the new view controller using segue.destination.
-//            // Pass the selected object to the new view controller.
-//
-//            if (segue.identifier == "CallEmbeddedDetailsRKITableViewController") {
-//                myEmbeddedTableViewController = segue.destination as? DetailsRKITableViewController
-//            }
-//        }
+    // ---------------------------------------------------------------------------------------------
+    // MARK: - Navigation
+    // ---------------------------------------------------------------------------------------------
+
+    /**
+     -----------------------------------------------------------------------------------------------
+     
+     prepare for:
+     
+     -----------------------------------------------------------------------------------------------
+     */
+    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // Get the new view controller using segue.destination.
+        // Pass the selected object to the new view controller.
+        
+        if segue.identifier == self.segueShowDetailFromMap {
+
+            // get the view controller
+            let navigationViewController = segue.destination as! UINavigationController
+            let destinationViewController =
+                navigationViewController.topViewController as! DetailViewController
+
+            // set the index to show
+            destinationViewController.indexOfRestaurantToShowDetails = self.indexOfRestaurantToShowDetails
+        }
+    }
 }
 
 

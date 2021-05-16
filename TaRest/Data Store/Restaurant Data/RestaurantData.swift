@@ -24,6 +24,10 @@ final class RestaurantData: NSObject {
     // ---------------------------------------------------------------------------------------------
     // MARK: - Class Properties
     // ---------------------------------------------------------------------------------------------
+    // this is the formatter we use to format the open / close times.
+    // StartRestaurantData() will do the setting
+    let myTimeFormatter = DateComponentsFormatter()
+    
     
     // each restaurant can have multiple timeslots, so we need a struct for a better model
     struct timeSlotStruct: Encodable, Decodable{
@@ -115,6 +119,9 @@ final class RestaurantData: NSObject {
         let isOpen: String
         let flags: String
         let coordinate: CLLocationCoordinate2D
+        var openHoursDays: [String] = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]
+        var openHoursValues: [String] = [ "", "", "", "", "", "", "" ]
+        
         
         init (_ name: String,
               _ image: UIImage,
@@ -130,6 +137,28 @@ final class RestaurantData: NSObject {
         }
     }
 
+    
+    // for the MapViewController this class provides preformatted data in this struct
+    struct dataForMapStruct {
+        
+        let name: String
+        let isOpen: String
+        let coordinate: CLLocationCoordinate2D
+        let index: Int          // the index in DataArray[], DetailView use this index
+        
+        init (_ name: String,
+              _ isOpen: String,
+              _ coordinate: CLLocationCoordinate2D,
+              _ index: Int) {
+            
+            self.name = name
+            self.isOpen = isOpen
+            self.coordinate = coordinate
+            self.index = index
+        }
+    }
+    
+    
     // ---------------------------------------------------------------------------------------------
     
     // we have two dictonaries for the images. Both dictonaries are prefilled with the "no image" image
@@ -157,66 +186,17 @@ final class RestaurantData: NSObject {
      */
     public func startRestaurantData() {
         
-        // this is the test sequence, to test the several view controllers.
-        //
-        // we do it in three steps:
-        // 1. Step (after 3 sec): we load testData 0
-        // 2. Step (after addional 10 sec): we load testData 1
-        // 3. Steps (after addional 10 sec): we load testData 2
-        //
-        // after each step we push the notification .TaRest_NewRestaurantDataAvailable
+        // setup the time formatter
+        myTimeFormatter.unitsStyle = .positional            // hh:mm
+        myTimeFormatter.allowedUnits = [.hour, .minute]
+        myTimeFormatter.zeroFormattingBehavior = [.pad]     // 07:00, not 7:00
+
+        // this is used to run tests
+        //self.testSequence()
         
-        GlobalData.unique.DataQueue.asyncAfter(deadline: .now() + .seconds(10), flags: .barrier, execute: {
-            
-            self.DataArray = self.testData_0
-
-            ErrorList.unique.add("RestaurantData.startRestaurantData()", .info,
-                                 "test 0, just replaced DataArray[] by testData_0[]")
-
-            DispatchQueue.main.async(execute: {
-                
-                NotificationCenter.default.post(Notification(name: .TaRest_NewRestaurantDataAvailable))
-                
-                ErrorList.unique.add("RestaurantData.startRestaurantData()", .info,
-                                     "restoreGlobalData just posted .TaRest_NewRestaurantDataAvailable")
-                
-            })
-
-
-            
-            GlobalData.unique.DataQueue.asyncAfter(deadline: .now() + .seconds(10), flags: .barrier, execute: {
-                
-                self.DataArray = self.testData_1
-                
-                ErrorList.unique.add("RestaurantData.startRestaurantData()", .info,
-                                     "test 1, just replaced DataArray[] by testData_1[]")
-                
-                DispatchQueue.main.async(execute: {
-                    
-                    NotificationCenter.default.post(Notification(name: .TaRest_NewRestaurantDataAvailable))
-                    
-                    ErrorList.unique.add("RestaurantData.startRestaurantData()", .info,
-                                         "restoreGlobalData just posted .TaRest_NewRestaurantDataAvailable")
-                    
-                })
-                
-                GlobalData.unique.DataQueue.asyncAfter(deadline: .now() + .seconds(10), flags: .barrier, execute: {
-                    self.DataArray = self.testData_2
-                    
-                    ErrorList.unique.add("RestaurantData.startRestaurantData()", .info,
-                                         "test 2, just replaced DataArray[] by testData_2[]")
-                    
-                    DispatchQueue.main.async(execute: {
-                        
-                        NotificationCenter.default.post(Notification(name: .TaRest_NewRestaurantDataAvailable))
-                        
-                        ErrorList.unique.add("RestaurantData.startRestaurantData()", .info,
-                                             "restoreGlobalData just posted .TaRest_NewRestaurantDataAvailable")
-                        
-                    })
-                })
-            })
-        })
+        // call the download methode. The methode will do it's work and will call self.handleNewRestaurantData()
+        GetRestaurantData.unique.downloadRestaurantData()
+        
     }
     
     
@@ -329,19 +309,236 @@ final class RestaurantData: NSObject {
             let coordinateToUse = CLLocationCoordinate2D(
                 latitude: item.coordinateLatitude, longitude: item.coordinateLongitude)
             
+            var detailData = dataForDetailStruct(item.name,
+                                                 imageToUse,
+                                                 isOpenToUse,
+                                                 item.flags,
+                                                 coordinateToUse)
+            
+            // now provide the opening hour strings
+            
+            for localIndex in 0 ..< item.hoursPerDay.count {
+                
+                let dayItem = item.hoursPerDay[localIndex]
+                
+                var dayString : String = ""
+                
+                for innerIndex in 0 ..< dayItem.count {
+                    
+                    let hourItem = dayItem[innerIndex]
+                    
+                    if hourItem.open == -1.0 {
+
+                        dayString.append(NSLocalizedString("OpenCloseString-closed",
+                                                           comment: ""))
+                        
+                    } else {
+                        
+                        let open = myTimeFormatter.string(from: hourItem.open) ?? ""
+                        let close = myTimeFormatter.string(from: hourItem.close) ?? ""
+                        
+                        dayString.append("\(open) - \(close)")
+                        
+                        if innerIndex < dayItem.count - 1 {
+                            //print("innerIndex \(innerIndex), added newLine")
+                            dayString.append("\n")
+                        //} else {
+                            //print("innerIndex \(innerIndex), did NOT added newLine")
+
+                        }
+                    }
+                }
+                
+                if dayString == "" {
+                    dayString.append(NSLocalizedString("OpenCloseString-unknown" ,
+                                                       comment: ""))
+                }
+                
+                // localize the day strings
+                detailData.openHoursDays[localIndex] = NSLocalizedString(detailData.openHoursDays[localIndex],
+                                                                    comment: "")
+                detailData.openHoursValues[localIndex] = dayString
+            }
+            
             // return what we have
-            return dataForDetailStruct(item.name,
-                                       imageToUse,
-                                       isOpenToUse,
-                                       item.flags,
-                                       coordinateToUse)
+            return detailData
         })
     }
+    
+    
+    /**
+     -----------------------------------------------------------------------------------------------
+     
+     Provides the data of the restaurants needed for the ListTableViewController as [dataForListStruct].
+     
+     returns nil, if self.DataArray[] is empty
+     
+     -----------------------------------------------------------------------------------------------
+     */
+    public func getDataForMap() -> [dataForMapStruct] {
+        
+        // to avoid data races we do it in the data queue
+        GlobalData.unique.DataQueue.sync(execute: {
+            
+            // create an empty array for the return values
+            var resultArray: [dataForMapStruct] = []
+            
+            // first check if we have data available
+            if self.DataArray.isEmpty == true {
+                
+                // yes, data array is empty, so return the currently empty resultArray[]
+                return resultArray
+            }
+            
+            // if we reach here, we have valid data
+            
+            // loop over the DataArray[]
+            for index in 0 ..< self.DataArray.count {
+                
+                // shortcut to the data item
+                let item = self.DataArray[index]
+                
+                 // get the string for the open status
+                let isOpenToUse = getOpenCloseString(restaurantIndex: index)
+                
+                // get the coordinate of the restaurant
+                let coordinateToUse = CLLocationCoordinate2D(
+                    latitude: item.coordinateLatitude, longitude: item.coordinateLongitude)
+                
+                // append what we have
+                resultArray.append(dataForMapStruct(item.name,
+                                                    isOpenToUse,
+                                                    coordinateToUse,
+                                                    index))
+            } // loop
+            
+            // return what we have
+            return resultArray
+        })
+    }
+
+    /**
+     -----------------------------------------------------------------------------------------------
+     
+     is called by GetRestaurantData.handleNewContent() to provide the new data
+     
+     -----------------------------------------------------------------------------------------------
+     
+     - Parameters:
+     - :
+     
+     - Returns:
+     
+     */
+    public func handleNewRestaurantData(_ newRestaurantData: [DataStruct], _ dicOfFileURL: [String : String]) {
+        
+        // we do this in an async queue
+        GlobalData.unique.DataQueue.async(flags: .barrier, execute: {
+            
+            // store the new data
+            self.DataArray = newRestaurantData
+            
+            // signal new data arraived
+            DispatchQueue.main.async(execute: {
+                
+                NotificationCenter.default.post(Notification(name: .TaRest_NewRestaurantDataAvailable))
+                
+                ErrorList.unique.add("RestaurantData.handleNewRestaurantData()", .info,
+                                     "just posted .TaRest_NewRestaurantDataAvailable")
+                
+            })
+        })
+        
+        // loop over the dictonary and handle each image file seperatly
+        for item in dicOfFileURL {
+            
+            let newHandler = GetImageFile()
+            newHandler.downloadImageData(referenceName: item.key, downloadURL: item.value)
+        }
+    }
+    
+    /**
+     -----------------------------------------------------------------------------------------------
+     
+     handles the new image just downloaded
+     
+     -----------------------------------------------------------------------------------------------
+     
+     - Parameters:
+        - referenceName: usually the name of the restaurant
+        - URL: the absolute location of the image file
+     - Returns:
+     
+     */
+    public func handleSingleImageDownload(referenceName: String, newImage: UIImage) {
+        
+        // we do this in an async queue
+        GlobalData.unique.DataQueue.async(flags: .barrier, execute: {
+            
+            if let indexFound = self.DataArray.firstIndex(where: { $0.name == referenceName } ) {
+                
+                let imageNameBig = referenceName + "_big"
+                let imageNameThumb = referenceName + "_thumb"
+                
+                self.fullSizeImageDic[imageNameBig] = self.resizeImage(image: newImage, size: 128.0)
+                self.thumbImageDic[imageNameThumb] = self.resizeImage(image: newImage, size: 64.0)
+                
+                self.DataArray[indexFound].fullSizeImageName = imageNameBig
+                self.DataArray[indexFound].thumbImageName = imageNameThumb
+                 
+                // signal new data arraived
+                DispatchQueue.main.async(execute: {
+                    
+                    NotificationCenter.default.post(Notification(name: .TaRest_NewRestaurantDataAvailable))
+                    
+                    ErrorList.unique.add("RestaurantData.handleSingleImageDownload()", .info,
+                                         "just posted .TaRest_NewRestaurantDataAvailable for \"\(referenceName)\"")
+
+                })
+                
+            } else {
+                
+                ErrorList.unique.add("RestaurantData.handleSingleImageDownload()", .error,
+                                     "no index found for \"\(referenceName)\", do nothing")
+
+            }
+        })
+        
+
+        
+    }
+
     
     // ---------------------------------------------------------------------------------------------
     // MARK: - Internal Methodes
     // ---------------------------------------------------------------------------------------------
     
+    
+    
+    /**
+     -----------------------------------------------------------------------------------------------
+     
+     
+     
+     -----------------------------------------------------------------------------------------------
+     
+     - Parameters:
+     - :
+     
+     - Returns:
+     
+     */
+    private func resizeImage(image: UIImage, size: CGFloat) -> UIImage {
+        
+        let originalSize = max(image.size.height, image.size.width)
+        
+        let resizingFactor = size / originalSize
+        let resizedImage = UIImage(cgImage: image.cgImage!,
+                               scale: image.scale / resizingFactor,
+                               orientation: .up)
+        
+        return resizedImage
+    }
     /**
      -----------------------------------------------------------------------------------------------
      
@@ -495,10 +692,88 @@ final class RestaurantData: NSObject {
         return NSLocalizedString("OpenCloseString-unknown", comment: "opening hours are unknown")
     }
     
+        
+    
+
     
     // ---------------------------------------------------------------------------------------------
     // MARK: - Test Data
     // ---------------------------------------------------------------------------------------------
+    
+    /**
+     -----------------------------------------------------------------------------------------------
+     
+      this is the test sequence, to test the several view controllers.
+     
+      we do it in three steps:
+      1. Step (after 3 sec): we load testData 0
+      2. Step (after addional 10 sec): we load testData 1
+      3. Steps (after addional 10 sec): we load testData 2
+     
+      after each step we push the notification .TaRest_NewRestaurantDataAvailable
+     
+     -----------------------------------------------------------------------------------------------
+     */
+    private func testSequence() {
+        
+        
+//        GlobalData.unique.DataQueue.asyncAfter(deadline: .now() + .seconds(3), flags: .barrier, execute: {
+//
+//            self.DataArray = self.testData_0
+//
+//            ErrorList.unique.add("RestaurantData.startRestaurantData()", .info,
+//                                 "test 0, just replaced DataArray[] by testData_0[]")
+//
+//            DispatchQueue.main.async(execute: {
+//
+//                NotificationCenter.default.post(Notification(name: .TaRest_NewRestaurantDataAvailable))
+//
+//                ErrorList.unique.add("RestaurantData.startRestaurantData()", .info,
+//                                     "restoreGlobalData just posted .TaRest_NewRestaurantDataAvailable")
+//
+//            })
+//
+//
+//
+//            GlobalData.unique.DataQueue.asyncAfter(deadline: .now() + .seconds(10), flags: .barrier, execute: {
+//
+//                self.DataArray = self.testData_1
+//
+//                ErrorList.unique.add("RestaurantData.startRestaurantData()", .info,
+//                                     "test 1, just replaced DataArray[] by testData_1[]")
+//
+//                DispatchQueue.main.async(execute: {
+//
+//                    NotificationCenter.default.post(Notification(name: .TaRest_NewRestaurantDataAvailable))
+//
+//                    ErrorList.unique.add("RestaurantData.startRestaurantData()", .info,
+//                                         "restoreGlobalData just posted .TaRest_NewRestaurantDataAvailable")
+//
+//               })
+                
+                GlobalData.unique.DataQueue.asyncAfter(deadline: .now() + .seconds(3), flags: .barrier, execute: {
+                    self.DataArray = self.testData_2
+                    
+                    ErrorList.unique.add("RestaurantData.startRestaurantData()", .info,
+                                         "test 2, just replaced DataArray[] by testData_2[]")
+                    
+                    DispatchQueue.main.async(execute: {
+                        
+                        NotificationCenter.default.post(Notification(name: .TaRest_NewRestaurantDataAvailable))
+                        
+                        ErrorList.unique.add("RestaurantData.startRestaurantData()", .info,
+                                             "restoreGlobalData just posted .TaRest_NewRestaurantDataAvailable")
+                        
+                    })
+                })
+//            })
+//        })
+
+    }
+    
+    
+    
+    
     
     let testData_0: [DataStruct] = [
         DataStruct("restaurant 1", "", "", "🇨🇳🇹🇭🇮🇹🇩🇪🇺🇸",
@@ -669,7 +944,7 @@ final class RestaurantData: NSObject {
                     [timeSlotStruct(-1.0, -1.0)],
                    ]),
         DataStruct("Guilin Noodle Express aa", "", "", "🇨🇳",
-                   52.520008, 13.404954,
+                   52.530008, 13.504954,
                    [
                     [timeSlotStruct(10.0 * 3_600, 12.0 * 3_600),
                      timeSlotStruct(14.0 * 3_600, 19.0 * 3_600)],
@@ -683,7 +958,7 @@ final class RestaurantData: NSObject {
 
                    ]),
         DataStruct("Bella Italia", "", "", "🇮🇹",
-                   52.520008, 13.404954,
+                   52.531008, 13.414954,
                    [
                     [timeSlotStruct(10.0 * 3_600, 12.0 * 3_600),
                      timeSlotStruct(14.0 * 3_600, 19.0 * 3_600)],
@@ -697,7 +972,7 @@ final class RestaurantData: NSObject {
                   ]),
         
         DataStruct("La Dolce Vita", "", "", "🇮🇹",
-                   52.520008, 13.404954,
+                   52.511008, 13.394954,
                    [
                     [timeSlotStruct(10.0 * 3_600, 12.0 * 3_600),
                      timeSlotStruct(14.0 * 3_600, 19.0 * 3_600)],
@@ -711,7 +986,7 @@ final class RestaurantData: NSObject {
                     [timeSlotStruct(10.0 * 3_600, 12.0 * 3_600)],
                   ]),
         DataStruct("Chiang Mai aa", "", "", "🇹🇭",
-                   52.520008, 13.404954,
+                   52.501008, 13.384954,
                    [
                     [timeSlotStruct(10.0 * 3_600, 12.0 * 3_600),
                      timeSlotStruct(14.0 * 3_600, 19.0 * 3_600)],
@@ -724,7 +999,7 @@ final class RestaurantData: NSObject {
                     [timeSlotStruct(10.0 * 3_600, 12.0 * 3_600)],
                 ]),
         DataStruct("Bangkok Hilton", "", "", "🇹🇭",
-                   52.520008, 13.404954,
+                   52.531008, 13.364954,
                    [
                     [timeSlotStruct(10.0 * 3_600, 12.0 * 3_600),
                      timeSlotStruct(14.0 * 3_600, 19.0 * 3_600)],
@@ -737,7 +1012,7 @@ final class RestaurantData: NSObject {
                     [timeSlotStruct(10.0 * 3_600, 12.0 * 3_600)],
                 ]),
         DataStruct("Burger World aa", "", "", "🇺🇸",
-                   52.520008, 13.404954,
+                   52.511008, 13.354954,
                    [
                     [timeSlotStruct(10.0 * 3_600, 12.0 * 3_600),
                      timeSlotStruct(14.0 * 3_600, 19.0 * 3_600)],

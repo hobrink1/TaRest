@@ -67,6 +67,12 @@
 		F2E56EE9264F0A0000BC2B8B /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2E56EE8264F0A0000BC2B8B /* DetailViewController.swift */; };
 		F2E56EEA264F0A0000BC2B8B /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2E56EE8264F0A0000BC2B8B /* DetailViewController.swift */; };
 		F2E56EEB264F0A0000BC2B8B /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2E56EE8264F0A0000BC2B8B /* DetailViewController.swift */; };
+		F2E56EF3265073A700BC2B8B /* JSON Restaurants.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2E56EF2265073A700BC2B8B /* JSON Restaurants.swift */; };
+		F2E56EF4265073A700BC2B8B /* JSON Restaurants.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2E56EF2265073A700BC2B8B /* JSON Restaurants.swift */; };
+		F2E56EF5265073A700BC2B8B /* JSON Restaurants.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2E56EF2265073A700BC2B8B /* JSON Restaurants.swift */; };
+		F2E56EF726508BF100BC2B8B /* GetImageFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2E56EF626508BF100BC2B8B /* GetImageFile.swift */; };
+		F2E56EF826508BF100BC2B8B /* GetImageFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2E56EF626508BF100BC2B8B /* GetImageFile.swift */; };
+		F2E56EF926508BF100BC2B8B /* GetImageFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2E56EF626508BF100BC2B8B /* GetImageFile.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -124,6 +130,8 @@
 		F2E56EDB264D65D600BC2B8B /* ListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListTableViewController.swift; sourceTree = "<group>"; };
 		F2E56EE3264EAAF700BC2B8B /* String Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String Extension.swift"; sourceTree = "<group>"; };
 		F2E56EE8264F0A0000BC2B8B /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		F2E56EF2265073A700BC2B8B /* JSON Restaurants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "JSON Restaurants.swift"; sourceTree = "<group>"; };
+		F2E56EF626508BF100BC2B8B /* GetImageFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetImageFile.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -260,6 +268,7 @@
 			isa = PBXGroup;
 			children = (
 				F2E56E83264BBBAD00BC2B8B /* GetRestaurantData.swift */,
+				F2E56EF2265073A700BC2B8B /* JSON Restaurants.swift */,
 			);
 			path = "Restaurant Data";
 			sourceTree = "<group>";
@@ -267,6 +276,7 @@
 		F2E56E81264BBA6500BC2B8B /* Presentation Images */ = {
 			isa = PBXGroup;
 			children = (
+				F2E56EF626508BF100BC2B8B /* GetImageFile.swift */,
 			);
 			path = "Presentation Images";
 			sourceTree = "<group>";
@@ -502,6 +512,7 @@
 				F2E56EC7264C702200BC2B8B /* MapViewController.swift in Sources */,
 				F2E56EE9264F0A0000BC2B8B /* DetailViewController.swift in Sources */,
 				F2E56E8F264BC12100BC2B8B /* GlobalData.swift in Sources */,
+				F2E56EF726508BF100BC2B8B /* GetImageFile.swift in Sources */,
 				F2E56E35264AAA5100BC2B8B /* AppDelegate.swift in Sources */,
 				F2E56ECB264D26D800BC2B8B /* flags.swift in Sources */,
 				F2E56EBD264C208D00BC2B8B /* MainTabBarController.swift in Sources */,
@@ -512,6 +523,7 @@
 				F2E56EA1264C063200BC2B8B /* InfoTableViewController.swift in Sources */,
 				F2E56E93264BD91000BC2B8B /* Notification Name Extention.swift in Sources */,
 				F2E56E37264AAA5100BC2B8B /* SceneDelegate.swift in Sources */,
+				F2E56EF3265073A700BC2B8B /* JSON Restaurants.swift in Sources */,
 				F2E56EDC264D65D600BC2B8B /* ListTableViewController.swift in Sources */,
 				F2E56ED8264D582B00BC2B8B /* RestaurantData.swift in Sources */,
 				F2E56E8B264BBE9E00BC2B8B /* ErrorList.swift in Sources */,
@@ -533,7 +545,9 @@
 				F2E56EEA264F0A0000BC2B8B /* DetailViewController.swift in Sources */,
 				F2E56ECC264D26D800BC2B8B /* flags.swift in Sources */,
 				F2E56ED9264D582B00BC2B8B /* RestaurantData.swift in Sources */,
+				F2E56EF826508BF100BC2B8B /* GetImageFile.swift in Sources */,
 				F2E56ED1264D4FCD00BC2B8B /* ListTableViewCell.swift in Sources */,
+				F2E56EF4265073A700BC2B8B /* JSON Restaurants.swift in Sources */,
 				F2E56E94264BD91000BC2B8B /* Notification Name Extention.swift in Sources */,
 				F2E56E8C264BBE9E00BC2B8B /* ErrorList.swift in Sources */,
 				F2E56E90264BC12100BC2B8B /* GlobalData.swift in Sources */,
@@ -556,7 +570,9 @@
 				F2E56EEB264F0A0000BC2B8B /* DetailViewController.swift in Sources */,
 				F2E56ECD264D26D800BC2B8B /* flags.swift in Sources */,
 				F2E56EDA264D582B00BC2B8B /* RestaurantData.swift in Sources */,
+				F2E56EF926508BF100BC2B8B /* GetImageFile.swift in Sources */,
 				F2E56ED2264D4FCD00BC2B8B /* ListTableViewCell.swift in Sources */,
+				F2E56EF5265073A700BC2B8B /* JSON Restaurants.swift in Sources */,
 				F2E56E95264BD91000BC2B8B /* Notification Name Extention.swift in Sources */,
 				F2E56E8D264BBE9E00BC2B8B /* ErrorList.swift in Sources */,
 				F2E56E91264BC12100BC2B8B /* GlobalData.swift in Sources */,
