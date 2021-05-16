@@ -46,9 +46,6 @@
 		F2E56EC7264C702200BC2B8B /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2E56EC6264C702200BC2B8B /* MapViewController.swift */; };
 		F2E56EC8264C702200BC2B8B /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2E56EC6264C702200BC2B8B /* MapViewController.swift */; };
 		F2E56EC9264C702200BC2B8B /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2E56EC6264C702200BC2B8B /* MapViewController.swift */; };
-		F2E56ECB264D26D800BC2B8B /* flags.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2E56ECA264D26D800BC2B8B /* flags.swift */; };
-		F2E56ECC264D26D800BC2B8B /* flags.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2E56ECA264D26D800BC2B8B /* flags.swift */; };
-		F2E56ECD264D26D800BC2B8B /* flags.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2E56ECA264D26D800BC2B8B /* flags.swift */; };
 		F2E56ED0264D4FCD00BC2B8B /* ListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2E56ECF264D4FCD00BC2B8B /* ListTableViewCell.swift */; };
 		F2E56ED1264D4FCD00BC2B8B /* ListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2E56ECF264D4FCD00BC2B8B /* ListTableViewCell.swift */; };
 		F2E56ED2264D4FCD00BC2B8B /* ListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2E56ECF264D4FCD00BC2B8B /* ListTableViewCell.swift */; };
@@ -123,7 +120,6 @@
 		F2E56EB8264C0E6000BC2B8B /* InfoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoTableViewCell.swift; sourceTree = "<group>"; };
 		F2E56EBC264C208D00BC2B8B /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		F2E56EC6264C702200BC2B8B /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
-		F2E56ECA264D26D800BC2B8B /* flags.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = flags.swift; sourceTree = "<group>"; };
 		F2E56ECF264D4FCD00BC2B8B /* ListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListTableViewCell.swift; sourceTree = "<group>"; };
 		F2E56ED3264D517E00BC2B8B /* ListTableViewCellNoData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListTableViewCellNoData.swift; sourceTree = "<group>"; };
 		F2E56ED7264D582B00BC2B8B /* RestaurantData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantData.swift; sourceTree = "<group>"; };
@@ -301,7 +297,6 @@
 			isa = PBXGroup;
 			children = (
 				F2E56ED7264D582B00BC2B8B /* RestaurantData.swift */,
-				F2E56ECA264D26D800BC2B8B /* flags.swift */,
 			);
 			path = "Restaurant Data";
 			sourceTree = "<group>";
@@ -514,7 +509,6 @@
 				F2E56E8F264BC12100BC2B8B /* GlobalData.swift in Sources */,
 				F2E56EF726508BF100BC2B8B /* GetImageFile.swift in Sources */,
 				F2E56E35264AAA5100BC2B8B /* AppDelegate.swift in Sources */,
-				F2E56ECB264D26D800BC2B8B /* flags.swift in Sources */,
 				F2E56EBD264C208D00BC2B8B /* MainTabBarController.swift in Sources */,
 				F2E56EE4264EAAF700BC2B8B /* String Extension.swift in Sources */,
 				F2E56E84264BBBAD00BC2B8B /* GetRestaurantData.swift in Sources */,
@@ -543,7 +537,6 @@
 				F2E56EBE264C208D00BC2B8B /* MainTabBarController.swift in Sources */,
 				F2E56EC8264C702200BC2B8B /* MapViewController.swift in Sources */,
 				F2E56EEA264F0A0000BC2B8B /* DetailViewController.swift in Sources */,
-				F2E56ECC264D26D800BC2B8B /* flags.swift in Sources */,
 				F2E56ED9264D582B00BC2B8B /* RestaurantData.swift in Sources */,
 				F2E56EF826508BF100BC2B8B /* GetImageFile.swift in Sources */,
 				F2E56ED1264D4FCD00BC2B8B /* ListTableViewCell.swift in Sources */,
@@ -568,7 +561,6 @@
 				F2E56EBF264C208D00BC2B8B /* MainTabBarController.swift in Sources */,
 				F2E56EC9264C702200BC2B8B /* MapViewController.swift in Sources */,
 				F2E56EEB264F0A0000BC2B8B /* DetailViewController.swift in Sources */,
-				F2E56ECD264D26D800BC2B8B /* flags.swift in Sources */,
 				F2E56EDA264D582B00BC2B8B /* RestaurantData.swift in Sources */,
 				F2E56EF926508BF100BC2B8B /* GetImageFile.swift in Sources */,
 				F2E56ED2264D4FCD00BC2B8B /* ListTableViewCell.swift in Sources */,
